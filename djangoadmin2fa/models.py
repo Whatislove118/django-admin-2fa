@@ -2,14 +2,14 @@ import random
 import string
 
 import pyotp
-from django.contrib.auth.models import User
+from django.conf import settings
 from django.db import models
 from django.utils import timezone
 
 
 class TOTPDevice(models.Model):
     user = models.ForeignKey(
-        User,
+        settings.AUTH_USER_MODEL,
         on_delete=models.CASCADE,
         related_name="admin_2fa_totp_devices",
         verbose_name="user",
